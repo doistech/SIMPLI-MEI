@@ -1,0 +1,64 @@
+<zk xmlns:h="http://www.w3.org/1999/xhtml" xmlns:n="native">
+    <h:header>
+        <h:nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <h:a class="navbar-brand" href="#">
+                <h:img src="https://doistech.s3.sa-east-1.amazonaws.com/simei/LogoOficialDoisTechHorizontal.png" width="120px"/>
+            </h:a>
+            <h:button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <h:span class="navbar-toggler-icon"></h:span>
+            </h:button>
+            <h:div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                <h:div class="navbar-nav">
+<!--                    <h:span class="sr-only">(current)</h:span>-->
+                    <a zclass="nav-item nav-link active" onClick="@command('navagationPage', codePage = 'cliente')">Clientes</a>
+                    <h:div class="nav-item dropdown">
+                        <h:a class="nav-link dropdown-toggle" href="#" id="navbarDropdown2" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Produtos
+                        </h:a>
+                        <h:div class="dropdown-menu" aria-labelledby="navbarDropdown2">
+                            <a zclass="dropdown-item" onClick="@command('navagationPage', codePage = 'product')">Cadastro de Produtos</a>
+                            <a zclass="dropdown-item" onClick="@command('navagationPage', codePage = 'rawMaterial')">Composição do produto</a>
+<!--                            <h:a class="dropdown-item" href="#">Composição</h:a>-->
+<!--                            <h:div class="dropdown-divider"></h:div>-->
+<!--                            <h:a class="dropdown-item" href="#">Ainda não pensei</h:a>-->
+                        </h:div>
+                    </h:div>
+<!--                    <h:a class="nav-item nav-link " href="#">Produtos</h:a>-->
+
+<!--                    <h:a class="nav-item nav-link " href="#">Pedidos</h:a>-->
+
+                    <h:div class="nav-item dropdown">
+                        <h:a class="nav-link dropdown-toggle" href="#" id="navbarDropdown3" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Pedidos
+                        </h:a>
+                        <h:div class="dropdown-menu" aria-labelledby="navbarDropdown3">
+                            <a zclass="dropdown-item" onClick="@command('navagationPage', codePage = 'order')">Realizar Pedidos</a>
+                            <a zclass="dropdown-item" onClick="@command('navagationPage', codePage = 'openOrders')">Pedidos em Abertos</a>
+                            <a zclass="dropdown-item" onClick="@command('navagationPage', codePage = 'completedOrders')">Pedidos Concluídos</a>
+                        </h:div>
+                    </h:div>
+
+                </h:div>
+            </h:div>
+            <h:div class="collapse navbar-collapse">
+                <h:ul class="navbar-nav ml-auto">
+                    <h:li class="nav-item dropdown">
+                        <h:a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Configuração
+                        </h:a>
+                        <h:div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <h:a class="dropdown-item" href="#">Conta</h:a>
+                            <h:a class="dropdown-item" href="#">Usuários</h:a>
+                            <h:div class="dropdown-divider"></h:div>
+                            <h:a class="dropdown-item" href="#">Ainda não pensei</h:a>
+                        </h:div>
+                    </h:li>
+
+                    <h:li class="nav-item">
+                        <a zclass="nav-item nav-link" onClick="@command('logout')">Sair</a>
+                    </h:li>
+                </h:ul>
+            </h:div>
+        </h:nav>
+    </h:header>
+</zk>

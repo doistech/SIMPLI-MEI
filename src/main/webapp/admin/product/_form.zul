@@ -1,0 +1,207 @@
+<zk xmlns:h="http://www.w3.org/1999/xhtml" xmlns:n="native">
+    <div zclass="container" style="margin-top: 30px;">
+        <div zclass="row">
+            <div zclass="col-md-6">
+                <div zclass="row">
+                    <div zclass="col-md-12">
+                        <div zclass="form-group group-form-registration">
+                            <label zclass="label-registration" value="Nome"/>
+                            <textbox zclass="form-control" value="@bind(prod.product.name)" placeholder=""/>
+                        </div>
+                    </div>
+
+                    <div zclass="col-md-6">
+                        <div zclass="form-group group-form-registration">
+                            <label zclass="label-registration" value="Código EAN (Código de Barras)"/>
+                            <textbox zclass="form-control" value="@bind(prod.product.codeEan)" placeholder=""/>
+                        </div>
+                    </div>
+
+                    <div zclass="col-md-6">
+                        <div zclass="form-group group-form-registration">
+                            <label zclass="label-registration" value="Descrição"/>
+                            <textbox zclass="form-control" value="@bind(prod.product.description)" placeholder=""/>
+                        </div>
+                    </div>
+
+                    <div zclass="col-md-12">
+                        <div zclass="form-group group-form-registration">
+                            <label zclass="label-registration" value="Preço de Custo"/>
+                            <textbox zclass="form-control" disabled="@load(prod.product.hasPriceMethod)"
+                                     value="@bind(prod.product.productOrderPrice) @converter('formatedNumber', format='###,##0.00')" placeholder=""/>
+                        </div>
+                    </div>
+
+
+<!--                    <div zclass="col-md-4">-->
+<!--                        <div zclass="form-group group-form-registration">-->
+<!--                            <label zclass="label-registration" value="Custo Fixo"/>-->
+<!--                            <textbox zclass="form-control" value="@bind(prod.product.fixedCost) @converter('formatedNumber', format='###,##0.00')" placeholder=""/>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                    <div zclass="col-md-4">-->
+<!--                        <div zclass="form-group group-form-registration">-->
+<!--                            <label zclass="label-registration" value="Outros Custos"/>-->
+<!--                            <textbox zclass="form-control" value="@bind(prod.product.otherCosts) @converter('formatedNumber', format='###,##0.00')" placeholder=""/>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                    <div zclass="col-md-4">-->
+<!--                        <div zclass="form-group group-form-registration">-->
+<!--                            <label zclass="label-registration" value="Custo Embalagem"/>-->
+<!--                            <textbox zclass="form-control" value="@bind(prod.product.packagingCost) @converter('formatedNumber', format='###,##0.00')" placeholder=""/>-->
+<!--                        </div>-->
+<!--                    </div>-->
+
+
+                    <div zclass="col-md-6">
+                        <div zclass="form-group group-form-registration">
+                            <label zclass="label-registration" value="% Lucro Varejo"/>
+                            <textbox zclass="form-control" value="@bind(prod.product.percentageOrderPrice) @converter('formatedNumber', format='###,##0.00')" placeholder="" onBlur="@command('calculationPriceSales')"/>
+                            <!--                    disabled="@load(prod.product.hasPriceMethod)"-->
+                        </div>
+                    </div>
+                    <div zclass="col-md-6">
+                        <div zclass="form-group group-form-registration">
+                            <label zclass="label-registration" value="Preço Varejo"/>
+                            <textbox zclass="form-control" disabled="@load(prod.product.hasPriceMethod)"
+                                     value="@bind(prod.product.salesPrice) @converter('formatedNumber', format='###,##0.00')" placeholder=""/>
+                        </div>
+                    </div>
+
+                    <div zclass="col-md-6">
+                        <div zclass="form-group group-form-registration">
+                            <label zclass="label-registration" value="% Lucro Atacado"/>
+                            <textbox zclass="form-control" value="@bind(prod.product.percentageWholesalePrice) @converter('formatedNumber', format='###,##0.00')" placeholder="" onBlur="@command('calculationPriceSales')"/>
+                            <!--disabled="@load(prod.product.hasPriceMethod)"-->
+                        </div>
+                    </div>
+
+                    <div zclass="col-md-6">
+                        <div zclass="form-group group-form-registration">
+                            <label zclass="label-registration" value="Preço de Atacado"/>
+                            <textbox zclass="form-control" disabled="@load(prod.product.hasPriceMethod)"
+                                     value="@bind(prod.product.wholesalePrice) @converter('formatedNumber', format='###,##0.00')" placeholder=""/>
+                        </div>
+                    </div>
+                    <div zclass="col-md-6">
+                        <div zclass="form-group group-form-registration">
+                            <label zclass="label-registration" value="Quantidade Atacado"/>
+                            <textbox zclass="form-control" value="@bind(prod.product.wholesaleQuantity) @converter('formatedNumber', format='###,##0.00')" />
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div zclass="col-md-6">
+                <div zclass="row">
+<!--                    <div zclass="col-md-12">-->
+<!--                        <div zclass="form-group group-form-registration">-->
+<!--                            <label zclass="label-registration" value="Cálculo de preço"/>-->
+<!--                            <h:br/>-->
+<!--                            <checkbox mold="switch" checked="@bind(prod.product.hasPriceMethod)"/>-->
+<!--                        </div>-->
+<!--                    </div>-->
+
+<!--                    visible="@load(prod.product.hasPriceMethod)"-->
+                    <div zclass="col-md-12" style="margin-top: 25px; height: 71px;">
+                        <h:h4>Cálculo de preço</h:h4>
+                        <checkbox mold="switch" checked="@bind(prod.product.hasPriceMethod)" style="position: relative; top: -38px; left: 35%;"/>
+                        <h:hr style="position: relative; top: -40px;"/>
+                    </div>
+
+<!--                    visible="@load(prod.product.hasPriceMethod)"-->
+                    <div zclass="col-md-12" >
+<!--                        visible="@load(prod.product.hasPriceMethod)"-->
+                        <div zclass="row">
+                            <div sclass="col-md-12">
+                                <div sclass="form-group">
+                                    <label>Insumos / Serviços</label>
+                                    <h:br/>
+                                    <combobox model="@load(prod.rawMaterialList)" selectedItem="@bind(prod.rawMaterial)"
+                                              readonly="true" style="height: 34px;width: 100%;" disabled="@load(!prod.product.hasPriceMethod)">
+                                        <template name="model" var="material">
+                                            <comboitem label="@load(material.name)" style="min-height: 1px!important;"/>
+                                        </template>
+                                    </combobox>
+                                </div>
+                            </div>
+                            <div sclass="col-md-4">
+                                <div sclass="form-group">
+                                    <label >Quantidade</label>
+                                    <decimalbox sclass="form-control" value="@bind(prod.productRawMaterial.quantity)" disabled="@load(!prod.product.hasPriceMethod)"/>
+                                </div>
+                            </div>
+                            <div sclass="col-md-4">
+                                <div sclass="form-group" style="margin-top: 25px;">
+                                    <label value="@load(prod.rawMaterial.unitMeasurement)"/>
+                                </div>
+                            </div>
+                            <div sclass="col-md-4">
+                                <button zclass="btn btn-primary" style="margin-top: 21px;"
+                                        label="Adicionar" onClick="@command('addProductRawMaterial')" width="100%" disabled="@load(!prod.product.hasPriceMethod)"/>
+                            </div>
+                        </div>
+                    </div>
+<!--                    visible="@load(prod.product.hasPriceMethod)"-->
+                    <div zclass="col-md-12" >
+                        <div zclass="form-group">
+                            <grid>
+                                <columns>
+                                    <column hflex="8">Nome</column>
+                                    <column hflex="4">Quantidade</column>
+                                    <column hflex="3">Preço</column>
+                                    <!--                <column hflex="3">Un. Medida</column>-->
+                                    <column hflex="4">Ação</column>
+                                </columns>
+                                <rows sclass="narrow" children="@load(prod.productRawMaterialList)">
+                                    <template name="children" var="productMaterial">
+                                        <row>
+                                            <label value="@load(productMaterial.rawMaterial.name)" />
+                                            <div>
+                                                <label value="@load(productMaterial.quantity) @converter('formatedNumber', format='###,##0.00')" />
+                                                <label value="@load(productMaterial.rawMaterial.unitMeasurement)" />
+                                            </div>
+                                            <label value="@load(productMaterial.price) @converter('formatedNumber', format='###,##0.00')"/>
+                                            <button zclass="btn btn-danger" label="Excluir"
+                                                    onClick="@command('deletItemProductRawMaterial', prm = productMaterial)"/>
+                                        </row>
+                                    </template>
+                                </rows>
+                            </grid>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+
+
+            <!--            <div zclass="col-md-2">-->
+            <!--                <div zclass="form-group group-form-registration">-->
+            <!--                    <label zclass="label-registration" value="Número" />-->
+            <!--                    <textbox zclass="form-control" value="@bind(client.cliente.addressNumber)" placeholder=""/>-->
+            <!--                </div>-->
+            <!--            </div>-->
+            <!--            <div zclass="col-md-6">-->
+            <!--                <div zclass="form-group group-form-registration">-->
+            <!--                    <label zclass="label-registration" value="Complemento" />-->
+            <!--                    <textbox zclass="form-control" value="@bind(client.cliente.addressComplement)" placeholder=""/>-->
+            <!--                </div>-->
+            <!--            </div>-->
+            <!--            <div zclass="col-md-6">-->
+            <!--                <div zclass="form-group group-form-registration">-->
+            <!--                    <label zclass="label-registration" value="Ponto de referência" />-->
+            <!--                    <textbox zclass="form-control" value="@bind(client.cliente.addressReference)" placeholder=""/>-->
+            <!--                </div>-->
+            <!--            </div>-->
+            <div zclass="col-md-12">
+                <div zclass="form-group group-form-registration">
+                    <button zclass="btn btn-primary" label="VOLTAR" onClick="@command('returnListProduct')"/>
+                    <button zclass="btn btn-success" label="INSERIR" onClick="@command('save')"/>
+                </div>
+            </div>
+        </div>
+    </div>
+</zk>

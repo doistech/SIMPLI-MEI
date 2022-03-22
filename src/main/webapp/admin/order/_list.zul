@@ -1,0 +1,22 @@
+<zk xmlns:h="http://www.w3.org/1999/xhtml" xmlns:n="native">
+    <div zclass="col-md-12">
+        <grid model="@load(order.orderSalesProductList)" mold="paging" pageSize="6" style="min-height: 365px;">
+            <columns>
+                <column hflex="8">Produto</column>
+                <column hflex="3">Preço</column>
+                <column hflex="2">Qtd.</column>
+                <column hflex="3">Total</column>
+            </columns>
+            <rows sclass="narrow">
+                <template name="model" var="orderProduct">
+                    <row onClick="@command('deleteItemSalesOrders', osp = orderProduct)">
+                        <label value="@load(orderProduct.product.name)"/>
+                        <label value="@load(orderProduct.priceItem) @converter('formatedNumber', format='###,##0.00')"/>
+                        <label value="@load(orderProduct.quantityItem) @converter('formatedNumber', format='###,##0.00')"/>
+                        <label value="@load(orderProduct.totalPriceItem) @converter('formatedNumber', format='###,##0.00')"/>
+                    </row>
+                </template>
+            </rows>
+        </grid>
+    </div>
+</zk>

@@ -1,0 +1,40 @@
+<zk xmlns:h="http://www.w3.org/1999/xhtml" xmlns:n="native">
+    <div zclass="col-md-12">
+        <div zclass="form-group group-form-registration">
+            <h:br/>
+            <label value="DADOS DE ACESSO" />
+        </div>
+    </div>
+    <div zclass="col-md-12" visible="@load(reg.errorUi.hasError)">
+        <h:div class="alert alert-danger" role="alert">
+            <h:div children="@load(reg.errorUi.errorUiList)">
+                <template name="children" var="error">
+                    <h:br/>
+                    ${error.errorMessage}
+                </template>
+            </h:div>
+        </h:div>
+    </div>
+    <div zclass="col-md-12">
+    <!--Formulario User-->
+        <div zclass="form-group group-form-registration">
+            <label zclass="label-registration" value="Nome" />
+            <textbox zclass="form-control" value="@bind(reg.user.name)"/>
+        </div>
+        <div zclass="form-group group-form-registration">
+            <label zclass="label-registration" value="E-mail" />
+            <textbox zclass="form-control" value="@bind(reg.user.username)"/>
+        </div>
+        <div zclass="form-group group-form-registration">
+            <label zclass="label-registration" value="Digite a senha" />
+            <textbox zclass="form-control" value="@bind(reg.user.password)" type="password"/>
+        </div>
+        <div zclass="form-group group-form-registration">
+            <label zclass="label-registration" value="confirme a senha" />
+            <textbox zclass="form-control" value="@bind(reg.user.passwordConfirmation)" type="password"/>
+        </div>
+        <div zclass="form-group group-form-registration" style="text-align: right;">
+            <button zclass="btn btn-primary" onClick="@command('nextStep01')" label="Próximo" style="margin-bottom: 20px;"/>
+        </div>
+    </div>
+</zk>

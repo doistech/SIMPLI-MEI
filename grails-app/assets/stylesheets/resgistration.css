@@ -1,0 +1,45 @@
+body{
+    padding: 0;
+    background: #70c2e8;
+    /*background: #95bbe8;*/
+    /*background-image: url("https://doistech.s3.sa-east-1.amazonaws.com/simei/grunge-background-azul.jpg");*/
+}
+
+@font-face {
+    font-family: futura-bt;
+    src: url('/assets/futura-bt.ttf');
+}
+
+@font-face {
+    font-family: futura-bold;
+    src: url('/assets/futura-bold-font.ttf');
+}
+
+.container-fluid-registration{
+    /*background-color: #fbf9ff;*/
+}
+
+.container-registration{
+    background-color: #fbf9ff;
+    min-height: 500px;
+    width: 700px;
+    border-radius: 17px;
+}
+
+.h3-text{
+    text-align: center;
+    margin-top: 35px;
+}
+
+.group-form-registration{
+    padding: 10px 25px 0 25px;
+}
+
+.label-registration{
+    color: #a9a7a7;
+}
+
+.title-form-steps{
+    text-align:center;
+    padding: 10px 0;
+}

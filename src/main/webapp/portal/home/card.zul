@@ -1,0 +1,89 @@
+<zk xmlns:h="http://www.w3.org/1999/xhtml" xmlns:n="native">
+
+    <div zclass="col-md-12" style="text-align: center;">
+        <h:br/>
+        <h:h2 style="font-family: futura-bold; color: #151c48;">SIMPLIFICA MEI</h:h2>
+        <h:h4 style="font-family: futura-bt;">ESCOLHA O MELHOR PLANO PARA VOCÊ</h:h4>
+        <h:hr/>
+    </div>
+
+    <div zclass="card-deck mb-3 text-center" children="@load(home.packageComerceList)">
+
+        <template name="children" var="pack">
+            <div zclass="card mb-4 box-shadow" visible="@load(pack.description eq 'TESTE')">
+                <h:div class="card-header">
+                    <h:h4 class="my-0 font-weight-normal" style="font-family: 'futura-bold';">${pack.description}</h:h4>
+                </h:div>
+                <h:div class="card-body">
+                    <h:h1 class="card-title pricing-card-title">R$ ${pack.priceTotal}</h:h1>
+                    <h:small class="text-muted" style="font-weight: 800; margin-top: -10px;">${pack.label}</h:small>
+                    <h:ul class="list-unstyled mt-3 mb-4">
+                        <h:li>${pack.countUser} Usuário</h:li>
+                        <h:li>Suporte Via WhatsApp</h:li>
+                    </h:ul>
+                    <button zclass="btn btn-lg btn-block btn-outline-primary"
+                            onClick="@command('selectPackageComerce', packageComerceSelect = pack)" label="Testar agora!" />
+                </h:div>
+            </div>
+
+            <div zclass="card mb-4 box-shadow" visible="@load(pack.description ne 'TESTE')">
+                <h:div class="card-header">
+                    <h:h4 class="my-0 font-weight-normal" style="font-family: 'futura-bold';">${pack.description}</h:h4>
+                </h:div>
+                <h:div class="card-body">
+                    <h:h1 class="card-title pricing-card-title">R$ ${pack.priceTotal}</h:h1>
+                    <h:small class="text-muted" style="font-weight: 800; margin-top: -10px;">${pack.label}</h:small>
+                    <h:ul class="list-unstyled mt-3 mb-4">
+                        <h:li>${pack.countUser} Usuários</h:li>
+                        <h:li>Suporte Via WhatsApp</h:li>
+                    </h:ul>
+                    <button zclass="btn btn-lg btn-block btn-primary"
+                            onClick="@command('selectPackageComerce', packageComerceSelect = pack)" label="Assinar agora!"/>
+                </h:div>
+            </div>
+        </template>
+
+<!--        <h:div class="card mb-4 box-shadow">-->
+<!--            <h:div class="card-header">-->
+<!--                <h:h4 class="my-0 font-weight-normal" style="font-family: 'futura-bold';">MENSAL</h:h4>-->
+<!--            </h:div>-->
+<!--            <h:div class="card-body">-->
+<!--                <h:h1 class="card-title pricing-card-title">R$25</h:h1>-->
+<!--                <h:small class="text-muted" style="font-weight: 800; margin-top: -10px;">POR MÊS</h:small>-->
+<!--                <h:ul class="list-unstyled mt-3 mb-4">-->
+<!--                    <h:li>2 Usuários</h:li>-->
+<!--                    <h:li>Suporte Via WhatsApp</h:li>-->
+<!--                </h:ul>-->
+<!--                <h:button type="button" class="btn btn-lg btn-block btn-primary">Assinar agora!</h:button>-->
+<!--            </h:div>-->
+<!--        </h:div>-->
+<!--        <h:div class="card mb-4 box-shadow">-->
+<!--            <h:div class="card-header">-->
+<!--                <h:h4 class="my-0 font-weight-normal" style="font-family: 'futura-bold';">SEMESTRAL</h:h4>-->
+<!--            </h:div>-->
+<!--            <h:div class="card-body">-->
+<!--                <h:h1 class="card-title pricing-card-title">R$135</h:h1>-->
+<!--                <h:small class="text-muted" style="font-weight: 800; margin-top: -10px;">POR SEMESTRE</h:small>-->
+<!--                <h:ul class="list-unstyled mt-3 mb-4">-->
+<!--                    <h:li>4 Usuários</h:li>-->
+<!--                    <h:li>Suporte Via WhatsApp</h:li>-->
+<!--                </h:ul>-->
+<!--                <h:button type="button" class="btn btn-lg btn-block btn-primary">Assinar agora!</h:button>-->
+<!--            </h:div>-->
+<!--        </h:div>-->
+<!--        <h:div class="card mb-4 box-shadow">-->
+<!--            <h:div class="card-header">-->
+<!--                <h:h4 class="my-0 font-weight-normal" style="font-family: 'futura-bold';">ANUAL</h:h4>-->
+<!--            </h:div>-->
+<!--            <h:div class="card-body">-->
+<!--                <h:h1 class="card-title pricing-card-title">R$250</h:h1>-->
+<!--                <h:small class="text-muted">POR ANO</h:small>-->
+<!--                <h:ul class="list-unstyled mt-3 mb-4">-->
+<!--                    <h:li>8 Usuários</h:li>-->
+<!--                    <h:li>Suporte Via WhatsApp</h:li>-->
+<!--                </h:ul>-->
+<!--                <h:button type="button" class="btn btn-lg btn-block btn-primary">Assinar agora!</h:button>-->
+<!--            </h:div>-->
+<!--        </h:div>-->
+    </div>
+</zk>

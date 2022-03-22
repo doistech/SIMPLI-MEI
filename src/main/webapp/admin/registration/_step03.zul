@@ -1,0 +1,41 @@
+<zk xmlns:h="http://www.w3.org/1999/xhtml" xmlns:n="native">
+<!--    <div zclass="col-md-12 title-form-steps">-->
+<!--        <label value="Dados do Usuário" />-->
+<!--    </div>-->
+
+    <div zclass="col-md-12">
+        <div zclass="form-group group-form-registration">
+            <h:br/>
+            <label value="DADOS DO USUÁRIO" />
+        </div>
+    </div>
+    <div zclass="col-md-12" visible="@load(reg.errorUi.hasError)">
+        <h:div class="alert alert-danger" role="alert">
+            <h:div children="@load(reg.errorUi.errorUiList)">
+                <template name="children" var="error">
+                    <h:br/>
+                    ${error.errorMessage}
+                </template>
+            </h:div>
+        </h:div>
+    </div>
+    <div zclass="col-md-12">
+        <div zclass="form-group group-form-registration">
+            <label zclass="label-registration" value="Nome" />
+            <textbox zclass="form-control" value="@bind(reg.account.name)"/>
+        </div>
+        <div zclass="form-group group-form-registration">
+            <label zclass="label-registration" value="Cargo" />
+            <textbox zclass="form-control" value="@bind(reg.account.office)"/>
+        </div>
+        <div zclass="form-group group-form-registration">
+            <label zclass="label-registration" value="Data de Nascimento" />
+            <datebox value="@bind(reg.account.birthDate)"/>
+<!--            zclass="form-control"-->
+        </div>
+
+        <div zclass="form-group group-form-registration" style="text-align: center;">
+            <button zclass="btn btn-success" label="Concluir" onClick="@command('registrationSave')" style="margin-bottom: 20px;"/>
+        </div>
+    </div>
+</zk>
