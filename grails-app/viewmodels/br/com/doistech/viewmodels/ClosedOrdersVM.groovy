@@ -1,12 +1,6 @@
 package br.com.doistech.viewmodels
 
-import br.com.doistech.domain.Company
-import br.com.doistech.domain.MethodPaymentOrderSales
-import br.com.doistech.domain.OrderSales
-import br.com.doistech.domain.OrderSalesProduct
-import br.com.doistech.domain.Product
-import br.com.doistech.domain.StatusOrderSales
-import br.com.doistech.domain.User
+import br.com.doistech.domain.*
 import br.com.doistech.service.InjectUtils
 import br.com.doistech.service.MethodPaymentService
 import br.com.doistech.service.OrderSalesProductService
@@ -21,7 +15,7 @@ import org.zkoss.zhtml.Messagebox
 import org.zkoss.zk.ui.Session
 import org.zkoss.zk.ui.Sessions
 
-class OpenOrdersVM {
+class ClosedOrdersVM {
     // Services
     OrderSalesService orderSalesService
     OrderSalesProductService orderSalesProductService
@@ -55,7 +49,7 @@ class OpenOrdersVM {
     //Maps
     Map searchMonthDate = [:]
 
-    List<String> statusOrderSalesList = ['Pendente', 'Em produção', 'Concluído', 'Entregue']
+    List<String> statusOrderSalesList = ['Concluído', 'Entregue']
 
     @Init
     public void init() {
@@ -71,7 +65,7 @@ class OpenOrdersVM {
 
         defaultFromAndToDateMonth()
 
-        orderSalesList = orderSalesService.getOpenOrderSalesList(searchMonthDate.orderSalesFromDate,
+        orderSalesList = orderSalesService.getClosedOrderSalesList(searchMonthDate.orderSalesFromDate,
                 searchMonthDate.orderSalesToDate, statusOrderSalesList, company)
 
         methodPaymentOrderSalesMapList = methodPaymentService.getMethodPaymentOrderList(company)
@@ -105,7 +99,7 @@ class OpenOrdersVM {
     @Command
     @NotifyChange(['*'])
     void searchOrderSales(String status){
-        orderSalesList = orderSalesService.getOpenOrderSalesList(searchMonthDate.orderSalesFromDate,
+        orderSalesList = orderSalesService.getClosedOrderSalesList(searchMonthDate.orderSalesFromDate,
                 searchMonthDate.orderSalesToDate, statusOrderSalesList, company)
     }
 
@@ -127,7 +121,7 @@ class OpenOrdersVM {
     @NotifyChange(['*'])
     void returnListOrderSales() {
         defaultFromAndToDateMonth()
-        orderSalesList = orderSalesService.getOpenOrderSalesList(searchMonthDate.orderSalesFromDate,
+        orderSalesList = orderSalesService.getClosedOrderSalesList(searchMonthDate.orderSalesFromDate,
                 searchMonthDate.orderSalesToDate, statusOrderSalesList, company)
         visibleForm = false
     }
@@ -177,8 +171,6 @@ class OpenOrdersVM {
 
         if(!errorUi.hasError){
             orderSales.orderStatus = statusOrderSalesSelect.status
-            orderSales.updatedBy = user.username
-            orderSales.dateUpdated = new Date()
 
             if(orderSales.paymentStatus == 'Pendente' && Utils.truncar(totalOrders) == 0){
                 orderSales.paymentStatus = 'Pago'

@@ -9,7 +9,7 @@ class ConstantPage {
     public static final String USERS_APP = '/admin/client/index.zul'
     public static final String ORDER_APP = '/admin/order/index.zul'
     public static final String OPEN_ORDERS_APP = '/admin/openOrders/index.zul'
-    public static final String COMPLETED_ORDERS_APP = '/admin/completedOrders/index.zul'
+    public static final String COMPLETED_ORDERS_APP = '/admin/closedOrders/index.zul'
 
 
 }

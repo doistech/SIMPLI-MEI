@@ -18,6 +18,7 @@ import org.hibernate.annotations.Fetch
 @Transactional
 class OrderSalesService {
 
+    ErrorUi errorUi
     MethodPaymentService methodPaymentService
     JsonManipulationService jsonManipulationService
     ProductRawMaterialService productRawMaterialService
@@ -30,11 +31,26 @@ class OrderSalesService {
         }
     }
 
-    List<OrderSales> getOrderSalesList(Date fromDate, Date toDate, String orderStatus = null){
+
+    List<OrderSales> getOpenOrderSalesList(Date fromDate, Date toDate, List<String> orderStatusList = [], Company company){
         return OrderSales.createCriteria().list {
-            if(orderStatus) eq('orderStatus', orderStatus)
+            if(orderStatusList.size()>0) 'in'('orderStatus', orderStatusList)
             ge('orderDate', fromDate)
-            ne('orderDate', toDate)
+            le('orderDate', toDate)
+            ne('paymentStatus', 'Pago')
+            eq('company', company)
+            fetchMode("cliente", FetchMode.JOIN)
+            fetchMode("company", FetchMode.JOIN)
+        }
+    }
+
+    List<OrderSales> getClosedOrderSalesList(Date fromDate, Date toDate, List<String> orderStatusList = [], Company company){
+        return OrderSales.createCriteria().list {
+            if(orderStatusList.size()>0) 'in'('orderStatus', orderStatusList)
+            ge('orderDate', fromDate)
+            le('orderDate', toDate)
+            eq('paymentStatus', 'Pago')
+            eq('company', company)
             fetchMode("cliente", FetchMode.JOIN)
             fetchMode("company", FetchMode.JOIN)
         }
@@ -204,6 +220,25 @@ class OrderSalesService {
     List<StatusOrderSales> getStatusOrderSalesList(Company company){
         return StatusOrderSales.createCriteria().list {
             eq('company', company)
+        }
+    }
+
+    Map updatedStatusOrderSales(OrderSales orderSales, List<Map> methodPaymentOrderSalesList = []){
+        try{
+            orderSales.save(flush:true)
+
+            if(methodPaymentOrderSalesList.size() > 0){
+                methodPaymentOrderSalesList.each { mpos ->
+                    if(mpos.methodPaymentOrderSales.valuePayment > 0){
+                        saveMethodPaymentOrderSales(mpos.methodPaymentOrderSales, orderSales)
+                    }
+                }
+            }
+            return ['status':0, 'orderSales':orderSales]
+        } catch(Exception e){
+            e.printStackTrace()
+
+            return ['status':2, 'orderSales': null]
         }
     }
 }

@@ -139,10 +139,28 @@
             </div>
 
             <div zclass="row" style="margin-top: 5px; margin-bottom: 10px;">
-                <div zclass="col-md-12" style="text-align: center;">
+                <div zclass="col-md-3" style="text-align: center;">
+                    <div style="border: solid 1px; border-radius: 16px;">
+                        <label value="Método de Pagamento: "/>
+                        <label value="@load(vm.orderSales.methodPaymentOrderSales eq 'Signal' ? 'SINAL' : orderSales.methodPaymentOrderSales eq 'Delivery' ? 'NA ENTREGA' : 'TOTAL')"/>
+                    </div>
+                </div>
+                <div zclass="col-md-3" style="text-align: center;">
                     <div style="border: solid 1px; border-radius: 16px;">
                         <label value="Total: R$ "/>
                         <label value="@load(vm.orderSales.totalOrder) @converter('formatedNumber', format='###,##0.00')"/>
+                    </div>
+                </div>
+                <div zclass="col-md-3" style="text-align: center;">
+                    <div style="border: solid 1px; border-radius: 16px;">
+                        <label value="Sinal: R$ "/>
+                        <label value="@load(vm.valueSignal) @converter('formatedNumber', format='###,##0.00')"/>
+                    </div>
+                </div>
+                <div zclass="col-md-3" style="text-align: center;">
+                    <div style="border: solid 1px; border-radius: 16px;">
+                        <label value="Falta pagar: R$ "/>
+                        <label value="@load(vm.remainsPay) @converter('formatedNumber', format='###,##0.00')"/>
                     </div>
                 </div>
             </div>

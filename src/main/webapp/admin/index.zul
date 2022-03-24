@@ -12,5 +12,6 @@
          viewModel="@id('indexAdm')@init('br.com.doistech.viewmodels.IndexAdminVM')">
         <include src="/admin/common/menu.zul"/>
         <include src="@load(indexAdm.currentPage)"/>
+        <include src="/admin/common/footer.zul" style="margin-top: 100px;"/>
     </div>
 </zk>

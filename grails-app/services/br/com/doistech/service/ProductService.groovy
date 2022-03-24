@@ -40,6 +40,7 @@ class ProductService {
         Product.withTransaction {
             productList = Product.createCriteria().list {
                 eq('company', company)
+                order("name", "asc")
             }
         }
         return productList

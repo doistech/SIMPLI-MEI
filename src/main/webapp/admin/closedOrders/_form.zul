@@ -3,7 +3,7 @@
         <div zclass="row">
             <div zclass="col-md-12">
                 <div zclass="form-group group-form-registration">
-                    <label value="@load(openOrders.titleFormOrderSales)" style="font-size: 24px; font-weight: bold;"/>
+                    <label value="@load(closedOrders.titleFormOrderSales)" style="font-size: 24px; font-weight: bold;"/>
                     <h:hr/>
                 </div>
             </div>
@@ -21,7 +21,7 @@
                                 <div zclass="col-md-12">
                                     <div zclass="form-group group-form-registration">
                                         <label zclass="label-registration" value="Cliente"/>
-                                        <textbox zclass="form-control" disabled="true" value="@load(openOrders.orderSales.cliente.name)" />
+                                        <textbox zclass="form-control" disabled="true" value="@load(closedOrders.orderSales.cliente.name)" />
                                     </div>
                                 </div>
 
@@ -29,7 +29,7 @@
                                     <div zclass="form-group group-form-registration">
                                         <label zclass="label-registration" value="Data do Pedido"/>
                                         <textbox zclass="form-control" disabled="true"
-                                                 value="@load(openOrders.orderSales.orderDate) @converter('formatedDate', format='dd/MM/yyyy')" />
+                                                 value="@load(closedOrders.orderSales.orderDate) @converter('formatedDate', format='dd/MM/yyyy')" />
                                     </div>
                                 </div>
 
@@ -37,7 +37,7 @@
                                     <div zclass="form-group group-form-registration">
                                         <label zclass="label-registration" value="Previsão de Entrega"/>
                                         <textbox zclass="form-control" disabled="true"
-                                                 value="@load(openOrders.orderSales.deliveryDate) @converter('formatedDate', format='dd/MM/yyyy')"/>
+                                                 value="@load(closedOrders.orderSales.deliveryDate) @converter('formatedDate', format='dd/MM/yyyy')"/>
                                     </div>
                                 </div>
 
@@ -45,7 +45,7 @@
                                     <div zclass="form-group group-form-registration">
                                         <label zclass="label-registration" value="Status Pedido"/>
                                         <textbox zclass="form-control" disabled="true"
-                                                 value="@load(openOrders.orderSales.orderStatus)"/>
+                                                 value="@load(closedOrders.orderSales.orderStatus)"/>
                                     </div>
                                 </div>
 
@@ -53,14 +53,14 @@
                                     <div zclass="form-group group-form-registration">
                                         <label zclass="label-registration" value="Tipo Pagamento"/>
                                         <textbox zclass="form-control" disabled="true"
-                                                 value="@load(openOrders.orderSales.methodPaymentOrderSales eq 'Signal' ? 'SINAL' : orderSales.methodPaymentOrderSales eq 'Delivery' ? 'NA ENTREGA' : 'TOTAL')"/>
+                                                 value="@load(closedOrders.orderSales.methodPaymentOrderSales eq 'Signal' ? 'SINAL' : orderSales.methodPaymentOrderSales eq 'Delivery' ? 'NA ENTREGA' : 'TOTAL')"/>
                                     </div>
                                 </div>
                                 <div zclass="col-md-3 col-sm-3">
                                     <div zclass="form-group group-form-registration">
                                         <label zclass="label-registration" value="Status Pagamento"/>
                                         <textbox zclass="form-control" disabled="true"
-                                                 value="@load(openOrders.orderSales.paymentStatus)"/>
+                                                 value="@load(closedOrders.orderSales.paymentStatus)"/>
                                     </div>
                                 </div>
 
@@ -68,7 +68,7 @@
                                     <div zclass="form-group group-form-registration">
                                         <label zclass="label-registration" value="Total do Pedido"/>
                                         <textbox zclass="form-control" disabled="true"
-                                                 value="@bind(openOrders.orderSales.totalOrder) @converter('formatedNumber', format='###,##0.00')"/>
+                                                 value="@bind(closedOrders.orderSales.totalOrder) @converter('formatedNumber', format='###,##0.00')"/>
                                     </div>
                                 </div>
 
@@ -76,14 +76,14 @@
                                     <div zclass="form-group group-form-registration">
                                         <label zclass="label-registration" value="Resta pagar"/>
                                         <textbox zclass="form-control" disabled="true"
-                                                 value="@bind(openOrders.remainsPay) @converter('formatedNumber', format='###,##0.00')"/>
+                                                 value="@bind(closedOrders.remainsPay) @converter('formatedNumber', format='###,##0.00')"/>
                                     </div>
                                 </div>
                                 </div>
                                 <div zclass="row">
                                     <div zclass="col-md-12" >
                                         <div zclass="form-group">
-                                            <grid model="@load(openOrders.orderSalesProductList)" mold="paging" pageSize="6">
+                                            <grid model="@load(closedOrders.orderSalesProductList)" mold="paging" pageSize="6">
                                                 <columns>
                                                     <column hflex="8">Produto</column>
                                                     <column hflex="3">Preço</column>
@@ -111,16 +111,16 @@
                                         <div zclass="form-group group-form-registration">
                                             <label zclass="label-registration" value="Status Pedido Atual"/>
                                             <textbox zclass="form-control" disabled="true"
-                                                     value="@load(openOrders.orderSales.orderStatus)"/>
+                                                     value="@load(closedOrders.orderSales.orderStatus)"/>
                                         </div>
                                     </div>
 
-                                    <div zclass="col-md-4 col-sm-4" visible="@load(openOrders.orderSales.orderStatus ne 'Entregue')">
+                                    <div zclass="col-md-4 col-sm-4" visible="@load(closedOrders.orderSales.orderStatus ne 'Entregue')">
                                         <div zclass="form-group group-form-registration">
                                             <label zclass="label-registration" value="Novo Status Pedido"/>
                                             <h:br/>
-                                            <combobox model="@load(openOrders.statusOrdemSalesList)"
-                                                      selectedItem="@bind(openOrders.statusOrderSalesSelect)" style="width: 100%;">
+                                            <combobox model="@load(closedOrders.statusOrdemSalesList)"
+                                                      selectedItem="@bind(closedOrders.statusOrderSalesSelect)" style="width: 100%;">
                                                 <template name="model" var="sos">
                                                     <comboitem label="@load(sos.status)"/>
                                                 </template>
@@ -136,7 +136,7 @@
                                         <div zclass="form-group group-form-registration">
                                             <label zclass="label-registration" value="Status Pagamento"/>
                                             <textbox zclass="form-control" disabled="true"
-                                                     value="@load(openOrders.orderSales.paymentStatus)"/>
+                                                     value="@load(closedOrders.orderSales.paymentStatus)"/>
                                         </div>
                                     </div>
 
@@ -144,7 +144,7 @@
                                         <div zclass="form-group group-form-registration">
                                             <label zclass="label-registration" value="Total do Pedido"/>
                                             <textbox zclass="form-control" disabled="true"
-                                                     value="@bind(openOrders.orderSales.totalOrder) @converter('formatedNumber', format='###,##0.00')"/>
+                                                     value="@bind(closedOrders.orderSales.totalOrder) @converter('formatedNumber', format='###,##0.00')"/>
                                         </div>
                                     </div>
 
@@ -152,20 +152,20 @@
                                         <div zclass="form-group group-form-registration">
                                             <label zclass="label-registration" value="Resta pagar"/>
                                             <textbox zclass="form-control" disabled="true"
-                                                     value="@bind(openOrders.remainsPay) @converter('formatedNumber', format='###,##0.00')"/>
+                                                     value="@bind(closedOrders.remainsPay) @converter('formatedNumber', format='###,##0.00')"/>
                                         </div>
                                     </div>
                                     <div zclass="col-md-3 col-sm-3">
                                         <div zclass="form-group group-form-registration">
                                             <label zclass="label-registration" value="-"/>
                                             <textbox zclass="form-control" disabled="true"
-                                                     value="@bind(openOrders.totalOrders) @converter('formatedNumber', format='###,##0.00')"/>
+                                                     value="@bind(closedOrders.totalOrders) @converter('formatedNumber', format='###,##0.00')"/>
                                         </div>
                                     </div>
                                 </div>
-                                <div zclass="row" visible="@load(openOrders.orderSales.paymentStatus ne 'Pago')">
+                                <div zclass="row" visible="@load(closedOrders.orderSales.paymentStatus ne 'Pago')">
                                     <div zclass="col-md-12">
-                                        <div children="@load(openOrders.methodPaymentOrderSalesMapList)">
+                                        <div children="@load(closedOrders.methodPaymentOrderSalesMapList)">
                                             <template name="children" var="pos">
                                                 <div zclass="input-group mb-3">
                                                     <div zclass="input-group-prepend">
@@ -196,7 +196,7 @@
             <div zclass="col-md-12">
                 <div zclass="form-group group-form-registration">
                     <button zclass="btn btn-primary" label="VOLTAR" onClick="@command('returnListOrderSales')"/>
-                    <button zclass="btn btn-success" label="ATUALIZAR PEDIDO" onClick="@command('save')"/>
+<!--                    <button zclass="btn btn-success" label="ATUALIZAR PEDIDO" onClick="@command('save')"/>-->
                 </div>
 
             </div>

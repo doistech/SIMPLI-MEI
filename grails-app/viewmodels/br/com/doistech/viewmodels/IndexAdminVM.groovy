@@ -4,6 +4,7 @@ import br.com.doistech.domain.PackageComerce
 import br.com.doistech.domain.User
 import br.com.doistech.service.InjectUtils
 import br.com.doistech.service.SessionService
+import br.com.doistech.service.SetupService
 import br.com.doistech.utils.ConstantPage
 import org.zkoss.bind.annotation.BindingParam
 import org.zkoss.bind.annotation.Command
@@ -17,6 +18,7 @@ import javax.management.Notification
 
 class IndexAdminVM {
     SessionService sessionService
+    SetupService setupService
 
     Session session
 
@@ -26,6 +28,9 @@ class IndexAdminVM {
     @Init
     void init() {
         sessionService = InjectUtils.getBean('sessionService')
+        setupService = InjectUtils.getBean('setupService')
+
+        setupService.setup()
 
         session = Sessions.getCurrent()
 
