@@ -1,0 +1,19 @@
+<zk xmlns:h="http://www.w3.org/1999/xhtml" xmlns:n="native">
+    <div zclass="row row-description">
+        <!-- Resumo do projeto -->
+        <div zclass="col-md-7" style="font-family: futura-bt; background-color: #70c2e8;">
+            <h:h1 style="margin-top: 15%; font-family: futura-bold;">SIMPLIFICA MEI</h:h1>
+            <h:p>Simplifica MEI é um sistema pensado e desenvolvido para facilitar
+                a gestão comercial dos Microempreendedores Individuais e pequenos comerciantes
+                que sejam registrados ou autônomo.
+            </h:p>
+            <h:p>
+                Pensamos em um desenvolvimento colocaborativo, onde a sua experência e sugestão podem
+                ser incorporado na plataforma. Tendo assim um ambiente simples e mais eficaz ao seu negócio.
+            </h:p>
+        </div>
+        <div zclass="col-md-5" style="padding: 0 0 0 0; background-color: #70c2e8;">
+            <h:img src="https://doistech.s3.sa-east-1.amazonaws.com/simei/LogoSimplificaMEI.png" width="100%"/>
+        </div>
+    </div>
+</zk>

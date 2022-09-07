@@ -1,0 +1,39 @@
+<zk xmlns:h="http://www.w3.org/1999/xhtml" xmlns:n="native">
+    <div zclass="row row-default box-description">
+        <!--            <include src="/home/cardAbout.zul"/>-->
+        <div zclass="col-md-4" style="text-align: center;">
+            <div style="height: 100px;
+                            width: 100px;
+                            margin-left: auto;
+                            margin-right: auto;">
+                <h:img src="https://doistech.s3.sa-east-1.amazonaws.com/simei/designer-de-web.png" width="100%"/>
+            </div>
+            <h:h4 style="font-family: 'futura-bold';padding-top: 20px; color: #151c48;">CRIAÇÃO DE SITES</h:h4>
+            <h:p>Desenvolvimento de Web Sites para Empresas, ONGs e Igrejas. Esteja na web, seja visto!</h:p>
+        </div>
+        <div zclass="col-md-4" style="text-align: center;">
+            <div style="height: 100px;
+                            width: 100px;
+                            margin-left: auto;
+                            margin-right: auto;">
+                <h:img src="https://doistech.s3.sa-east-1.amazonaws.com/simei/software-de-design.png" width="100%"/>
+
+            </div>
+            <h:h4 style="font-family: 'futura-bold';padding-top: 20px; color: #151c48;">SISTEMAS PERSONALIZADOS</h:h4>
+            <h:p>Sistema de Infomação personalizado para o seu negócio!</h:p>
+        </div>
+        <div zclass="col-md-4" style="text-align: center;">
+            <div style="height: 100px;
+                            width: 100px;
+                            border-radius: 50px;
+                            margin-left: auto;
+                            margin-right: auto;">
+<!--                <h:img src="https://doistech.s3.sa-east-1.amazonaws.com/simei/LogoSimplificaMEI-png.png" width="100%"/>-->
+                <h:img src="https://doistech.s3.sa-east-1.amazonaws.com/simei/prancheta.png" width="100%"/>
+
+            </div>
+            <h:h4 style="font-family: 'futura-bold';padding-top: 20px; color: #151c48;">SIMPLIFICA MEI</h:h4>
+            <h:p>Gestão comercial para Microempreendedores Individuais e Pequenos Comerciantes</h:p>
+        </div>
+    </div>
+</zk>

@@ -1,0 +1,147 @@
+<zk xmlns:h="http://www.w3.org/1999/xhtml" xmlns:n="native">
+    <?link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" rel="stylesheet" id="bootstrap-css"?>
+    <?script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"?>
+    <?script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"?>
+
+    <style>
+        .label-number-dash{
+            font-size: 24px;
+            color: white;
+            font-weight: 700;
+            margin-bottom: 0;
+        }
+
+        .label-dash{
+            font-size: 16px;
+            color: white;
+            margin-bottom: 0;
+        }
+
+        .label-box-home{
+            font-family: Futura;
+            margin-top: 10px;
+            margin-bottom: 2px;
+        }
+
+
+        .label-box-home-item{
+            font-family: Futura;
+            margin-top: 10px;
+            margin-bottom: 0;
+        }
+
+        .label-box-home-date{
+            font-family: Futura;
+            font-size: 12px;
+            color: gray;
+            margin-top: 0;
+        }
+
+        .box-notifications{
+            background: #fafafa;
+            border-radius: 10px;
+            min-height: 400px;
+        }
+
+        .box-development{
+            background: #fafafa;
+            border-radius: 10px;
+            min-height: 400px;
+        }
+
+        hr{
+            margin-bottom: 2px;
+            margin-top: 2px;
+        }
+    </style>
+
+    <div zclass="container-fluid" style="background-color: #e2dbdb;">
+        <div zclass="container">
+            <div zclass="row">
+                <div zclass="col-md-12" style="margin-top: 25px; margin-bottom: 25px;">
+                    <h:h2>Seja bem-vindo!</h:h2>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div zclass="container" style="margin-top: 20px">
+        <div zclass="card-columns">
+            <div zclass="card bg-primary" onClick="@global-command('navagationPage', codePage = 'openOrders')">
+                <div zclass="card-body text-center">
+                    <label zclass="card-text label-number-dash" value="@load(indexAdm.dashboardCardHomeMap.orderOpenCount)"/>
+                    <h:p class="card-text label-dash">PEDIDOS ABERTOS</h:p>
+                </div>
+            </div>
+            <div zclass="card bg-warning" onClick="@global-command('navagationPage', codePage = 'cliente')">
+                <div zclass="card-body text-center">
+                    <label zclass="card-text label-number-dash" value="@load(indexAdm.dashboardCardHomeMap.clientCount)"/>
+                    <h:p class="card-text label-dash">NOSSOS CLIENTES</h:p>
+                </div>
+            </div>
+            <div zclass="card bg-success" onClick="@global-command('navagationPage', codePage = 'completedOrders')">
+                <div zclass="card-body text-center">
+                    <label zclass="card-text label-number-dash" value="@load(indexAdm.dashboardCardHomeMap.orderClosedCount)"/>
+                    <h:p class="card-text label-dash">PEDIDOS CONCLUÍDOS</h:p>
+                </div>
+            </div>
+            <div zclass="card bg-light" onClick="@global-command('navagationPage', codePage = 'product')">
+                <div zclass="card-body text-center">
+                    <label zclass="card-text label-number-dash" value="@load(indexAdm.dashboardCardHomeMap.productCount)"/>
+                    <h:p class="card-text label-dash">NOSSOS PRODUTOS</h:p>
+                </div>
+            </div>
+            <div zclass="card bg-danger">
+                <div zclass="card-body text-center">
+                    <h:p class="card-text label-number-dash">000</h:p>
+                    <h:p class="card-text label-dash">PEDIDOS CANCELADOS</h:p>
+                </div>
+            </div>
+            <div zclass="card bg-info">
+                <div zclass="card-body text-center">
+                    <h:p class="card-text label-number-dash">000</h:p>
+                    <h:p class="card-text label-dash">PAGAMENTOS PENDENTES</h:p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div zclass="container" style="margin-top: 20px">
+        <div zclass="row">
+            <div zclass="col-md-6">
+                <div zclass="col-md-12 box-notifications">
+                    <div zclass="row">
+                        <div zclass="col-md-12">
+                            <h:p class="label-box-home">Notificações</h:p>
+                            <h:hr/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div zclass="col-md-6">
+                <div zclass="col-md-12 box-development">
+                    <div zclass="row">
+                        <div zclass="col-md-12">
+                            <h:p class="label-box-home">Desenvolvimentos</h:p>
+                            <h:hr/>
+                        </div>
+                        <div zclass="col-md-12">
+                            <h:p class="label-box-home-item">Edição de Pedido</h:p>
+                            <h:p class="label-box-home-date">Previsão: 20-06-2022</h:p>
+                            <h:hr/>
+                        </div>
+                        <div zclass="col-md-12">
+                            <h:p class="label-box-home-item">Cancelamento de Pedido</h:p>
+                            <h:p class="label-box-home-date">Previsão: 20-06-2022</h:p>
+                            <h:hr/>
+                        </div>
+                        <div zclass="col-md-12">
+                            <h:p class="label-box-home-item">Emissão de Relatórios</h:p>
+                            <h:p class="label-box-home-date">Previsão: 20-06-2022</h:p>
+                            <h:hr/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</zk>

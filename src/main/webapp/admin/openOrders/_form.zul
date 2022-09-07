@@ -1,0 +1,221 @@
+<zk xmlns:h="http://www.w3.org/1999/xhtml" xmlns:n="native">
+    <div zclass="container" style="margin-top: 30px; padding-bottom: 100px;">
+        <div zclass="row">
+            <div zclass="col-md-12">
+                <div zclass="form-group group-form-registration">
+                    <label value="@load(openOrders.titleFormOrderSales)" style="font-size: 24px; font-weight: bold;"/>
+                    <h:hr/>
+                </div>
+            </div>
+            <div zclass="col-md-12" style="text-align: right;">
+                <div zclass="form-group group-form-registration">
+                    <button zclass="btn btn-primary" label="VOLTAR" onClick="@command('returnListOrderSales')"/>
+                    <button zclass="btn btn-success" label="ATUALIZAR PEDIDO" onClick="@command('save')"/>
+                </div>
+            </div>
+            <div zclass="col-md-12" style="margin-bottom: 20px;">
+                <div zclass="row">
+                    <tabbox id="tb" width="100%" mold="accordion">
+                        <tabs>
+                            <tab label="DESCRIÇÃO DO PEDIDO" />
+                            <tab label="STATUS DO PEDIDO" />
+                            <tab label="PAGAMENTO PEDIDO" />
+                        </tabs>
+                        <tabpanels>
+                            <tabpanel>
+                                <div zclass="row">
+                                <div zclass="col-md-8">
+                                    <div zclass="form-group group-form-registration">
+                                        <label zclass="label-registration" value="Cliente"/>
+                                        <textbox zclass="form-control" disabled="true" value="@load(openOrders.orderSales.cliente.name)" />
+                                    </div>
+                                </div>
+                                    <div zclass="col-md-2">
+                                        <div zclass="form-group group-form-registration">
+                                            <button zclass="btn btn-primary" onClick="@command('editOrderSales')" style="margin-top:22px; width: 100%;" label="EDITAR PEDIDO"/>
+                                        </div>
+                                    </div>
+                                    <div zclass="col-md-2">
+                                        <div zclass="form-group group-form-registration">
+                                            <button zclass="btn btn-primary" style="margin-top:22px; width: 100%;" label="IMPRIMIR O.S" onClick="@command('printOS')"/>
+                                        </div>
+                                    </div>
+
+                                <div zclass="col-md-4 col-sm-4">
+                                    <div zclass="form-group group-form-registration">
+                                        <label zclass="label-registration" value="Data do Pedido"/>
+                                        <textbox zclass="form-control" disabled="true"
+                                                 value="@load(openOrders.orderSales.orderDate) @converter('formatedDate', format='dd/MM/yyyy')" />
+                                    </div>
+                                </div>
+
+                                <div zclass="col-md-4 col-sm-4">
+                                    <div zclass="form-group group-form-registration">
+                                        <label zclass="label-registration" value="Previsão de Entrega"/>
+                                        <textbox zclass="form-control" disabled="true"
+                                                 value="@load(openOrders.orderSales.deliveryDate) @converter('formatedDate', format='dd/MM/yyyy')"/>
+                                    </div>
+                                </div>
+
+                                <div zclass="col-md-4 col-sm-4">
+                                    <div zclass="form-group group-form-registration">
+                                        <label zclass="label-registration" value="Status Pedido"/>
+                                        <textbox zclass="form-control" disabled="true"
+                                                 value="@load(openOrders.orderSales.orderStatus)"/>
+                                    </div>
+                                </div>
+
+                                <div zclass="col-md-3 col-sm-3">
+                                    <div zclass="form-group group-form-registration">
+                                        <label zclass="label-registration" value="Tipo Pagamento"/>
+                                        <textbox zclass="form-control" disabled="true"
+                                                 value="@load(openOrders.orderSales.methodPaymentOrderSales eq 'Signal' ? 'SINAL' : orderSales.methodPaymentOrderSales eq 'Delivery' ? 'NA ENTREGA' : 'TOTAL')"/>
+                                    </div>
+                                </div>
+                                <div zclass="col-md-3 col-sm-3">
+                                    <div zclass="form-group group-form-registration">
+                                        <label zclass="label-registration" value="Status Pagamento"/>
+                                        <textbox zclass="form-control" disabled="true"
+                                                 value="@load(openOrders.orderSales.paymentStatus)"/>
+                                    </div>
+                                </div>
+
+                                <div zclass="col-md-3 col-sm-3">
+                                    <div zclass="form-group group-form-registration">
+                                        <label zclass="label-registration" value="Total do Pedido"/>
+                                        <textbox zclass="form-control" disabled="true"
+                                                 value="@bind(openOrders.orderSales.totalOrder) @converter('formatedNumber', format='###,##0.00')"/>
+                                    </div>
+                                </div>
+
+                                <div zclass="col-md-3 col-sm-3">
+                                    <div zclass="form-group group-form-registration">
+                                        <label zclass="label-registration" value="Resta pagar"/>
+                                        <textbox zclass="form-control" disabled="true"
+                                                 value="@bind(openOrders.remainsPay) @converter('formatedNumber', format='###,##0.00')"/>
+                                    </div>
+                                </div>
+                                </div>
+                                <div zclass="row">
+                                    <div zclass="col-md-12" >
+                                        <div zclass="form-group">
+                                            <grid model="@load(openOrders.orderSalesProductList)" mold="paging" pageSize="6">
+                                                <columns>
+                                                    <column hflex="8">Produto</column>
+                                                    <column hflex="3">Preço</column>
+                                                    <column hflex="2">Qtd.</column>
+                                                    <column hflex="3">Total</column>
+                                                </columns>
+                                                <rows sclass="narrow">
+                                                    <template name="model" var="orderProduct">
+                                                        <row onClick="@command('deleteItemSalesOrders', osp = orderProduct)">
+                                                            <label value="@load(orderProduct.product.name)"/>
+                                                            <label value="@load(orderProduct.priceItem) @converter('formatedNumber', format='###,##0.00')"/>
+                                                            <label value="@load(orderProduct.quantityItem) @converter('formatedNumber', format='###,##0.00')"/>
+                                                            <label value="@load(orderProduct.totalPriceItem) @converter('formatedNumber', format='###,##0.00')"/>
+                                                        </row>
+                                                    </template>
+                                                </rows>
+                                            </grid>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div zclass="row">
+                                    <div zclass="col-md-12" style="margin-top:10px;margin-botton:10px;">
+                                        <div zclass="form-group group-form-registration">
+                                            <label zclass="label-registration" value="Descriçao do Pedido"/>
+                                            <textbox zclass="form-control" rows="5" cols="40" value="@bind(openOrders.orderSales.orderDescription)" disabled="true"/>
+                                        </div>
+                                    </div>
+                                </div>
+                            </tabpanel>
+                            <tabpanel>
+                                <div zclass="row">
+                                    <div zclass="col-md-4 col-sm-4">
+                                        <div zclass="form-group group-form-registration">
+                                            <label zclass="label-registration" value="Status Pedido Atual"/>
+                                            <textbox zclass="form-control" disabled="true"
+                                                     value="@load(openOrders.orderSales.orderStatus)"/>
+                                        </div>
+                                    </div>
+
+                                    <div zclass="col-md-4 col-sm-4" visible="@load(openOrders.orderSales.orderStatus ne 'Entregue')">
+                                        <div zclass="form-group group-form-registration">
+                                            <label zclass="label-registration" value="Novo Status Pedido"/>
+                                            <h:br/>
+                                            <combobox model="@load(openOrders.statusOrdemSalesList)"
+                                                      selectedItem="@bind(openOrders.statusOrderSalesSelect)" style="width: 100%;">
+                                                <template name="model" var="sos">
+                                                    <comboitem label="@load(sos.status)"/>
+                                                </template>
+                                            </combobox>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </tabpanel>
+                            <tabpanel>
+                                <div zclass="row">
+                                    <div zclass="col-md-3 col-sm-3">
+                                        <div zclass="form-group group-form-registration">
+                                            <label zclass="label-registration" value="Status Pagamento"/>
+                                            <textbox zclass="form-control" disabled="true"
+                                                     value="@load(openOrders.orderSales.paymentStatus)"/>
+                                        </div>
+                                    </div>
+
+                                    <div zclass="col-md-3 col-sm-3">
+                                        <div zclass="form-group group-form-registration">
+                                            <label zclass="label-registration" value="Total do Pedido"/>
+                                            <textbox zclass="form-control" disabled="true"
+                                                     value="@bind(openOrders.orderSales.totalOrder) @converter('formatedNumber', format='###,##0.00')"/>
+                                        </div>
+                                    </div>
+
+                                    <div zclass="col-md-3 col-sm-3">
+                                        <div zclass="form-group group-form-registration">
+                                            <label zclass="label-registration" value="Resta pagar"/>
+                                            <textbox zclass="form-control" disabled="true"
+                                                     value="@bind(openOrders.remainsPay) @converter('formatedNumber', format='###,##0.00')"/>
+                                        </div>
+                                    </div>
+                                    <div zclass="col-md-3 col-sm-3">
+                                        <div zclass="form-group group-form-registration">
+                                            <label zclass="label-registration" value="-"/>
+                                            <textbox zclass="form-control" disabled="true"
+                                                     value="@bind(openOrders.totalOrders) @converter('formatedNumber', format='###,##0.00')"/>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div zclass="row" visible="@load(openOrders.orderSales.paymentStatus ne 'Pago')">
+                                    <div zclass="col-md-12">
+                                        <div children="@load(openOrders.methodPaymentOrderSalesMapList)">
+                                            <template name="children" var="pos">
+                                                <div zclass="input-group mb-3">
+                                                    <div zclass="input-group-prepend">
+                                                        <span class="input-group-text">${pos.name}</span>
+                                                    </div>
+                                                    <textbox zclass="form-control" onBlur="@command('paymentControl', methodPaymentOrderSales = pos)"
+                                                             value="@bind(pos.methodPaymentOrderSales.valuePayment) @converter('formatedNumber', format='###,##0.00')"/>
+                                                </div>
+                                            </template>
+                                        </div>
+                                    </div>
+                                </div>
+                            </tabpanel>
+                        </tabpanels>
+                    </tabbox>
+<!--                    <div zclass="col-md-6">-->
+<!--                        <div zclass="form-group group-form-registration">-->
+<!--                            <label zclass="label-registration" value="Quantidade Atacado"/>-->
+<!--                            <textbox zclass="form-control" value="@bind(prod.product.wholesaleQuantity) @converter('formatedNumber', format='###,##0.00')" />-->
+<!--                        </div>-->
+<!--                    </div>-->
+                </div>
+            </div>
+<!--            <div zclass="col-md-6">-->
+<!--                -->
+<!--            </div>-->
+        </div>
+    </div>
+</zk>

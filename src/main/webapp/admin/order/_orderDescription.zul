@@ -1,0 +1,8 @@
+<zk xmlns:h="http://www.w3.org/1999/xhtml" xmlns:n="native">
+    <div zclass="col-md-12" style="margin-top:10px;">
+            <div zclass="form-group group-form-registration">
+                <label zclass="label-registration" value="Descriçao do Pedido"/>
+                <textbox zclass="form-control" rows="5" cols="40" value="@bind(order.orderSales.orderDescription)"/>
+            </div>
+    </div>
+</zk>

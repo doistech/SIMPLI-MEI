@@ -1,0 +1,26 @@
+<zk xmlns:h="http://www.w3.org/1999/xhtml" xmlns:n="native">
+    <div zclass="row row-default box-card-client">
+        <!--            <include src="/home/cardAbout.zul"/>-->
+        <div zclass="col-md-3" style="text-align: center;">
+            <div zclass="icon-circle">
+                <h:img class="icon-circle" src="https://doistech.s3.sa-east-1.amazonaws.com/simei/Clientes/Logo-mc.png" width="100%"/>
+            </div>
+        </div>
+        <div zclass="col-md-3" style="text-align: center;">
+            <div zclass="icon-circle" style="background-color: pink;">
+                <h:img src="https://doistech.s3.sa-east-1.amazonaws.com/simei/Clientes/Logo-DonnaFe.png"
+                       style="width: 70%; height: 70%; margin-top: 12%; margin-bottom: auto;"/>
+            </div>
+        </div>
+        <div zclass="col-md-3" style="text-align: center;">
+            <div zclass="icon-circle">
+                <h:img src="https://doistech.s3.sa-east-1.amazonaws.com/simei/Clientes/Logo-day.png" width="100%"/>
+            </div>
+        </div>
+        <div zclass="col-md-3" style="text-align: center;">
+            <div zclass="icon-circle">
+                <h:img src="https://doistech.s3.sa-east-1.amazonaws.com/simei/Clientes/logo-ppesj.png" width="100%"/>
+            </div>
+        </div>
+    </div>
+</zk>

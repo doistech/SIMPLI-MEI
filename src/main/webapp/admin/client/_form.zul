@@ -1,0 +1,72 @@
+<zk xmlns:h="http://www.w3.org/1999/xhtml" xmlns:n="native">
+    <div zclass="container" style="margin-top: 30px;">
+        <div zclass="row">
+            <div zclass="col-md-12">
+                <div zclass="form-group group-form-registration">
+                    <label zclass="label-registration" value="Nome" />
+                    <textbox zclass="form-control" value="@bind(client.cliente.name)" placeholder=""/>
+                </div>
+            </div>
+
+            <div zclass="col-md-6">
+                <div zclass="form-group group-form-registration">
+                    <label zclass="label-registration" value="Telefone" />
+                    <textbox zclass="form-control" value="@bind(client.cliente.phone)" placeholder=""/>
+                </div>
+            </div>
+
+            <div zclass="col-md-6">
+                <div zclass="form-group group-form-registration">
+                    <label zclass="label-registration" value="Celular" />
+                    <textbox zclass="form-control" value="@bind(client.cliente.mobilePhone)" placeholder=""/>
+                </div>
+            </div>
+            <div zclass="col-md-12">
+                <div zclass="form-group group-form-registration">
+                    <label zclass="label-registration" value="E-mail" />
+                    <textbox zclass="form-control" value="@bind(client.cliente.email)" placeholder=""/>
+                </div>
+            </div>
+            <div zclass="col-md-12">
+                <h:h4>Endereço</h:h4>
+                <h:hr/>
+            </div>
+            <div zclass="col-md-3">
+                <div zclass="form-group group-form-registration">
+                    <label zclass="label-registration" value="CEP" />
+                    <textbox zclass="form-control" value="@bind(client.cliente.postalCode)" placeholder=""/>
+                </div>
+            </div>
+            <div zclass="col-md-7">
+                <div zclass="form-group group-form-registration">
+                    <label zclass="label-registration" value="Endereço" />
+                    <textbox zclass="form-control" value="@bind(client.cliente.address)" placeholder=""/>
+                </div>
+            </div>
+            <div zclass="col-md-2">
+                <div zclass="form-group group-form-registration">
+                    <label zclass="label-registration" value="Número" />
+                    <textbox zclass="form-control" value="@bind(client.cliente.addressNumber)" placeholder=""/>
+                </div>
+            </div>
+            <div zclass="col-md-6">
+                <div zclass="form-group group-form-registration">
+                    <label zclass="label-registration" value="Complemento" />
+                    <textbox zclass="form-control" value="@bind(client.cliente.addressComplement)" placeholder=""/>
+                </div>
+            </div>
+            <div zclass="col-md-6">
+                <div zclass="form-group group-form-registration">
+                    <label zclass="label-registration" value="Ponto de referência" />
+                    <textbox zclass="form-control" value="@bind(client.cliente.addressReference)" placeholder=""/>
+                </div>
+            </div>
+            <div zclass="col-md-12">
+                <div zclass="form-group group-form-registration">
+                    <button zclass="btn btn-primary" label="VOLTAR" onClick="@command('returnListCliente')"/>
+                    <button zclass="btn btn-success" label="INSERIR" onClick="@command('save')"/>
+                </div>
+            </div>
+        </div>
+    </div>
+</zk>

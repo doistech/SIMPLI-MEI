@@ -1,0 +1,207 @@
+<zk xmlns:h="http://www.w3.org/1999/xhtml" xmlns:n="native">
+    <!-- BootStrap -->
+    <?link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous"?>
+    <?script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"?>
+    <?script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"?>
+    <?script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"?>
+
+    <script type="text/javascript">
+        Window.print()
+    </script>
+
+<!--    <script type="text/javascript"><![CDATA[-->
+<!--            function printContent (divId) {-->
+<!--                // open a new window-->
+<!--                var mywindow = window.open('', '', 'height=793,width=1122'),-->
+<!--                    mwindoc = mywindow? mywindow.document : null;-->
+<!--                // write content to new window-->
+<!--                mwindoc.write('<html><head><title>Ordem de Serviço</title>');-->
+<!--                var links = document.getElementsByTagName('head')[0].getElementsByTagName('link'),-->
+<!--                    i;-->
+
+<!--                // add styles to new window-->
+<!--                for (i = 0; i < links.length; i++) {-->
+<!--                    var link = links[i],-->
+<!--                        lcnt = '<link'-->
+<!--                            + (link.rel? ' rel="'+link.rel+'"' : '')-->
+<!--                            + (link.type? ' type="'+link.type+'"' : '')-->
+<!--                            + (link.href? ' href="'+link.href+'"' : '')-->
+<!--                            + ' />';-->
+<!--                    //alert(lcnt);-->
+<!--                    mwindoc.write(lcnt);-->
+<!--                }-->
+<!--                mwindoc.write('</head><body >');-->
+<!--                // add contents to print to new window-->
+<!--                // the divId is the assigned div id-->
+<!--                mwindoc.write(jq('$'+divId)[0].innerHTML);-->
+<!--                mwindoc.write('</body></html>');-->
+
+<!--                // call print function then close the new window-->
+<!--                mywindow.document.close();-->
+<!--                mywindow.focus();-->
+<!--                mywindow.print();-->
+<!--                mywindow.close();-->
+
+<!--                return true;-->
+<!--            }-->
+<!--        ]]></script>-->
+
+    <style>
+        table, th, td {
+        border: 1px solid black;
+        border-collapse: collapse;
+        }
+    </style>
+    <div apply="org.zkoss.bind.BindComposer"
+         viewModel="@id('vm')@init('br.com.doistech.viewmodels.OrderOfServiceVM')">
+        <div id="content">
+            <div zclass="row">
+
+                <div zclass="col-md-1">
+                    <div style="width: 120px; height: 120px; background-color: green;">
+                        <image src="@load(vm.orderSales.company.urlImageLogo)" width="100%"/>
+                    </div>
+                </div>
+
+                <div zclass="col-md-4" style="padding-left: 55px;">
+                    <label value="@load(vm.orderSales.company.nameFantasy)"/>
+                    <h:br/>
+                    <label value="CPF/CNPJ: "/>
+                    <label value="@load(vm.orderSales.company.taxid)"/>
+                    <h:br/>
+                    <label value="E-mail: "/>
+                    <label value="@load(vm.orderSales.company.email)"/>
+                    <h:br/>
+                    <label value="Telefone: "/>
+                    <label value="@load(vm.orderSales.company.contactString01)"/>
+                </div>
+
+                <div zclass="col-md-7">
+                    <div style="border: solid 1px; border-radius: 16px;">
+                        <div style="padding: 15px 20px;">
+                            <label value="Pedido: "/>
+                            <label value="@load(vm.orderSales.id)"/>
+                            <h:br/>
+                            <label value="Data Pedido: "/>
+                            <label value="@load(vm.orderSales.dateCreated) @converter('formatedDate', format='dd/MM/yyyy')"/>
+                            <h:br/>
+                            <label value="Previsão de Entrega: "/>
+                            <label value="@load(vm.orderSales.deliveryDate) @converter('formatedDate', format='dd/MM/yyyy')"/>
+                            <h:br/>
+                            <label value="Cliente: "/>
+                            <label value="@load(vm.cliente.name)"/>
+                            <h:br/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div zclass="row" style="margin-top: 10px; margin-bottom: 10px;">
+                <div zclass="col-md-12" style="text-align: center;">
+                    <div style="border: solid 1px; border-radius: 16px;">
+                        <label>Ordem de Serviço</label>
+                    </div>
+
+                </div>
+            </div>
+            <div zclass="row" style="margin-top: 10px; margin-bottom: 10px;">
+                <div zclass="col-md-12" style="text-align: center;">
+                    <div style="margin-bottom: 0;">
+                        <h:table style="width:100%">
+                            <h:tr>
+                                <h:th>Produto</h:th>
+                                <h:th>Valor Un.</h:th>
+                                <h:th>QTD</h:th>
+                                <h:th>Total</h:th>
+                            </h:tr>
+                            <div children="@bind(vm.orderSalesProductList)">
+                                <template name="children" var="osp">
+                                    <label value="@bind(node.name)" style="padding-left:10px"/>
+
+                                    <h:tr>
+                                        <h:td>${osp.product.name}</h:td>
+                                        <h:td>
+                                            <label value="@load(osp.priceItem) @converter('formatedNumber', format='###,##0.00')"/>
+                                        </h:td>
+                                        <h:td>
+                                            <label value="@load(osp.quantityItem) @converter('formatedNumber', format='###,##0.00')"/>
+                                        </h:td>
+                                        <h:td>
+                                            <label value="@load(osp.totalPriceItem) @converter('formatedNumber', format='###,##0.00')"/>
+                                        </h:td>
+                                    </h:tr>
+                                </template>
+                            </div>
+                        </h:table>
+                    </div>
+
+                </div>
+            </div>
+
+            <div zclass="row" style="margin-top: 5px; margin-bottom: 10px;">
+                <div zclass="col-md-3" style="text-align: center;">
+                    <div style="border: solid 1px; border-radius: 16px;">
+                        <label value="Método de Pagamento: "/>
+                        <label value="@load(vm.orderSales.methodPaymentOrderSales eq 'Signal' ? 'SINAL' : orderSales.methodPaymentOrderSales eq 'Delivery' ? 'NA ENTREGA' : 'TOTAL')"/>
+                    </div>
+                </div>
+                <div zclass="col-md-3" style="text-align: center;">
+                    <div style="border: solid 1px; border-radius: 16px;">
+                        <label value="Total: R$ "/>
+                        <label value="@load(vm.orderSales.totalOrder) @converter('formatedNumber', format='###,##0.00')"/>
+                    </div>
+                </div>
+                <div zclass="col-md-3" style="text-align: center;">
+                    <div style="border: solid 1px; border-radius: 16px;">
+                        <label value="Sinal: R$ "/>
+                        <label value="@load(vm.valueSignal) @converter('formatedNumber', format='###,##0.00')"/>
+                    </div>
+                </div>
+                <div zclass="col-md-3" style="text-align: center;">
+                    <div style="border: solid 1px; border-radius: 16px;">
+                        <label value="Falta pagar: R$ "/>
+                        <label value="@load(vm.remainsPay) @converter('formatedNumber', format='###,##0.00')"/>
+                    </div>
+                </div>
+            </div>
+
+            <div zclass="row" style="margin-top: 10px; margin-bottom: 10px;">
+                <div zclass="col-md-12" style="text-align: center;">
+                    <div style="border: solid 1px; border-radius: 16px;">
+                        <label>Descrição do Pedido</label>
+                    </div>
+
+                    <div style="margin-top: 10px;">
+                        <label value="@load(vm.orderSales.orderDescription)"/>
+                    </div>
+
+                </div>
+            </div>
+
+            <div zclass="row" style="margin-top: 10px; margin-bottom: 10px;">
+                <div zclass="col-md-12" style="text-align: center; margin-top: 100px;">
+                    <div>
+                        <label>Caro cliente, a assinatura dessa ordem de serviço, garante que foi feita a conferência
+                            dos itens solicitados nesse pedido.
+                        </label>
+                        <h:br/>
+                        <h:br/>
+                        <h:br/>
+                        <label>____________________________________________________________</label>
+                        <h:br/>
+                        <label>Cliente</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <n:a href="#" onclick="window.print();">Imprimir Página</n:a>
+
+
+<!--    <button label="Print" onClick="window.print()">-->
+<!--        <attribute name="onClick"><![CDATA[-->
+<!--                  Clients.evalJavaScript("printContent('content');");-->
+<!--          	]]></attribute>-->
+<!--    </button>-->
+</zk>

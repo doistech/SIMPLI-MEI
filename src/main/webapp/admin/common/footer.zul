@@ -1,0 +1,20 @@
+<zk xmlns:h="http://www.w3.org/1999/xhtml" xmlns:n="native">
+    <style>
+        .footer-test {
+            position: fixed;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+<!--            background-color: red;-->
+<!--            color: white;-->
+<!--            text-align: center;-->
+        }
+    </style>
+    <h:footer class="bg-light text-center text-lg-start footer-test">
+        <!-- Copyright -->
+        <h:div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.05); color: white;">
+            © 2021 Copyright - DoisTech
+        </h:div>
+        <!-- Copyright -->
+    </h:footer>
+</zk>

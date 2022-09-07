@@ -1,0 +1,48 @@
+<zk xmlns:h="http://www.w3.org/1999/xhtml" xmlns:n="native">
+    <div zclass="container" style="margin-top: 30px;">
+        <div zclass="row">
+            <div zclass="col-md-4">
+                <div zclass="form-group group-form-registration">
+                    <button zclass="btn btn-success" label="NOVO CLIENTE" onClick="@command('newCliente')"/>
+                </div>
+            </div>
+            <div zclass="col-md-6">
+                <div zclass="form-group group-form-registration">
+                    <textbox zclass="form-control" placeholder="Pesquisa de Cliente" value="@bind(client.searchName)"/>
+                </div>
+
+            </div>
+            <div zclass="col-md-2">
+                <div zclass="form-group group-form-registration">
+                    <button label="PESQUISAR" style="width: 100%;" onClick="@command('searchCliente')"/>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div zclass="container" style="margin-top: 30px;">
+        <div zclass="row">
+            <div zclass="col-md-12">
+                <grid model="@load(client.clienteList)" mold="paging" pageSize="6">
+                    <columns>
+                        <column hflex="5">Nome</column>
+                        <column hflex="3">Celular</column>
+                        <column hflex="3">Telefone</column>
+                        <column hflex="5">E-mail</column>
+                    </columns>
+                    <rows sclass="narrow">
+                        <template name="model" var="cliente">
+                            <row onClick="@command('selectClientGrid', clienteSelect = cliente)">
+                                <label value="@load(cliente.name)" />
+                                <label value="@load(cliente.mobilePhone)" />
+                                <label value="@load(cliente.phone)" />
+                                <label value="@load(cliente.email)" />
+                            </row>
+                        </template>
+                    </rows>
+                </grid>
+            </div>
+        </div>
+    </div>
+
+</zk>
