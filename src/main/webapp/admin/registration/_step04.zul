@@ -1,9 +1,0 @@
-<zk xmlns:h="http://www.w3.org/1999/xhtml" xmlns:n="native">
-    <div zclass="row">
-        <div zclass="col-md-12">
-            <button zclass="btn btn-primary" label="Assinar"/>
-            <button zclass="btn btn-primary" label="Assinar"/>
-            <button zclass="btn btn-primary" label="Assinar"/>
-        </div>
-    </div>
-</zk>
