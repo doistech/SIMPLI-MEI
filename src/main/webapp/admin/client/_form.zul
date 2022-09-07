@@ -7,7 +7,12 @@
                     <textbox zclass="form-control" value="@bind(client.cliente.name)" placeholder=""/>
                 </div>
             </div>
-
+            <div zclass="col-md-12">
+                <div zclass="form-group group-form-registration">
+                    <label zclass="label-registration" value="CNPJ/CPF" />
+                    <textbox zclass="form-control" value="@bind(client.cliente.taxId)" placeholder=""/>
+                </div>
+            </div>
             <div zclass="col-md-6">
                 <div zclass="form-group group-form-registration">
                     <label zclass="label-registration" value="Telefone" />

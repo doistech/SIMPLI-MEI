@@ -22,7 +22,7 @@
                         <div zclass="form-group group-form-registration">
                             <label zclass="label-registration" value="Cliente"/>
                             <h:br/>
-                            <combobox style="width: 100%;" model="@load(order.clienteList)" selectedItem="@bind(order.clienteSelect)">
+                            <combobox style="width: 100%;" model="@load(order.clienteList)" selectedItem="@bind(order.clienteSelect)" readonly="true">
                                 <template name="model" var="cliente">
                                     <comboitem label="@load(cliente.name)"/>
 <!--                                    style="min-height: 1px!important;"-->
@@ -36,7 +36,7 @@
                         <div zclass="form-group group-form-registration">
                             <label zclass="label-registration" value="Produto"/>
                             <h:br/>
-                            <combobox model="@load(order.productList)" selectedItem="@bind(order.productSelect)" style="width: 100%;">
+                            <combobox model="@load(order.productList)" selectedItem="@bind(order.productSelect)" style="width: 100%;" readonly="true">
                                 <template name="model" var="product">
                                     <comboitem label="@load(product.name)"/>
                                 </template>
